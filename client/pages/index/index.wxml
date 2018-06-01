@@ -1,0 +1,143 @@
+<!--index.wxml-->
+<view class="container">
+    <!-- banner区 -->
+    <view class='bannerwarp'>
+      <view class="page-section page-section-spacing swiper">
+       <swiper indicator-dots="true" autoplay="true" indicator-active-color="rgba(255,0,0,0.8)" indicator-color="rgba(0,0,0,0.3)" circular="true" vertical="{{vertical}}" >
+        <block wx:for="{{banners}}" wx:key="{{index}}">
+          <swiper-item class="picitem">
+           <image class='bannerimg' src="{{item}}"></image>
+          </swiper-item>
+        </block>
+       </swiper>
+      </view>
+    </view>
+      <!-- <button open-type="contact">进入客服会话</button>
+      <contact-button 
+    type="default-light" 
+    size="20"
+    session-from="weapp"
+  >
+</contact-button> -->
+   <!-- <button class='loginbutton' open-type="getUserInfo"></button> 
+   <button class='loginbutton' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> </button> -->
+    <!-- 快递业务 -->
+    <view class='business'>
+        <!-- 左边业务 -->
+        <view class='warpleft pitem'>
+            <!-- 发快递 -->
+            
+            <view class='sendexpress'>
+              
+               <navigator url="/pages/sendexpress/sendexpress" hover-class="navigator-hover">
+               <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='userInfo'> -->
+                 <span class="sendtext">发快递</span>
+                 <view class='sendpic'>
+                    <image  src="../../images/send.png"></image>
+                 </view>
+                 <!-- </button> -->
+               </navigator>
+              
+            </view>
+           
+            <!-- 查看快递 -->
+            <view class='checkexpress'>
+                <navigator class='item top' url="/pages/addresslist/addresslist" hover-class="navigator-hover">
+                 <view class='pic'>
+                    <image  src="../../images/contact2.png"></image>
+                 </view>
+                 <view class='text'>通讯录</view>
+                 </navigator>
+              <navigator class='item top' url="/pages/searchlist/searchlist" hover-class="navigator-hover">
+              <view class='item bottom'>
+                  <view class='pic'>
+                    <image  src="../../images/search.png"></image>
+                  </view>
+                  <view class='text'>查快递</view>
+              </view>
+              </navigator>
+            </view>
+        </view>
+
+        <!-- 右边边业务 -->
+        <view class='warpright pitem'>
+            
+            <!-- 快递操作 -->
+            <view class='expressoption'>
+
+              <view class='topitem' bindtap='saoma'>
+                  <view  class='pic' style='background:#663399'>
+                    <image  src="../../images/saoyisao.png"></image>
+                  </view>
+                  <view class='text'>扫一扫</view>
+                </view>
+
+               <view class='topitem' bindtap='opendoor'>
+                  <view  class='pic' style='background:#1e82d2'>
+                    <image  src="../../images/guizi.png"></image>
+                  </view>
+                  <view class='text'>机柜门</view>
+                </view>
+
+                <view bindtap='printlist' class='topitem'>
+                  <view class='pic' style='background:#ffcc00'>
+                    <image  src="../../images/print.png"></image>
+                  </view>
+                  <view class='text'>快递单</view>
+                </view>
+                
+                <view class='topitem'bindtap='getpackge'>
+                  <view class='pic' style='background:#666699'>
+                    <image  src="../../images/info.png"></image>
+                  </view>
+                  <view class='text'>快递袋</view>
+                </view>
+                
+            </view>
+            
+        </view>
+    </view>
+   
+  <!-- 底部导航 -->
+  <view class='space'></view>
+   <view class='footer'>
+       <!-- 收件人 -->
+             <view class='recipients'>
+               <view class='addres sitem'>
+                 <navigator url="/pages/sendlist/sendlist" hover-class="navigator-hover">
+                   <view class='pic' style='background:#009966'>
+                     <image  src="../../images/position1.png"></image>
+                   </view>
+                   <view class='text'>发件人</view>
+                 </navigator>
+               </view>
+              
+               <view class='yhq sitem'>
+                 <view class='pic' style='background:#cc0000'>
+                   <image  src="../../images/youhuiquan5.png"></image>
+                 </view>
+                 <view class='text'>卡惠包</view>
+               </view>
+
+            </view>    
+      <!-- <view class='footeritem'>
+         <view class='text'>取件员</view>
+      </view>
+      <view class='footeritem'>
+         <view class='text'>代理商</view>
+      </view> -->
+      <navigator url="/pages/home/home" hover-class="navigator-hover">
+      <view class='footeritem' >
+         <view class='pic' >
+                   <image  src="../../images/logo1.png"></image>
+         </view>
+         <view class='fright'> 
+             <view class='text'>宋信</view>
+             <view class='text1'>开启邮路之门</view>
+         </view>
+      </view>
+      </navigator> 
+
+  </view>
+    
+</view>

@@ -1,0 +1,38 @@
+<top-bar title='物料管理' url='/pages/courier/courier'/>
+<view class='content'>
+    <!-- 添加快递袋 -->
+    <view class='addMaterial'>
+      <view class='nowBags'>本机现快递袋：{{expressBags}} 张     </view>
+      <view class='addBags'>
+          <view class='add'>
+              <text>补充：</text><input /><text>张</text>
+          </view>
+          <button type='warn'>确认无误</button>
+      </view>
+    </view>
+    <view class='bottom'></view>
+    <!-- 添加打印纸 -->
+    <view class='addMaterial'>
+      <view class='nowBags'>本机现打印纸：{{printPapers}} 张 </view>
+      <view class='addBags'>
+          <view class='add'>
+              <text>补充：</text><input /><text>张</text>
+          </view>
+          <button type='warn'>确认无误</button>
+      </view>
+    </view>
+    <view class='bottom'></view>
+     <!-- 故障报修 -->
+     <view class='bug'>
+      <view class='report'>本机报修</view>
+      <view class='bugDetail'>
+          <view class='reason'>
+             <view>故障问题说明</view>
+              <textarea placeholder="请详细说明故障原因并上传照片"></textarea>
+          </view>
+          <button bindtap="upPic">上传照片</button>
+          <button type='warn'>确认报修</button>
+      </view>
+    </view>
+</view>
+

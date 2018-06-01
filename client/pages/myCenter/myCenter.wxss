@@ -1,0 +1,72 @@
+/* .top{
+  width:100%;
+  display: flex;
+  text-align: center;
+  font-size: 40rpx;
+  background: #1e82d2;
+  color: #fff;
+  height: 132rpx;
+  
+  align-items: center;
+}
+.top .callback {
+  width: 20%;
+  height: 100%;
+  line-height: 132rpx;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.top .callback image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.backTitle{
+   margin-left: 20rpx;
+   height: 132rpx;
+   line-height: 132rpx;
+}
+.top .title{
+  height: 132rpx;
+   line-height: 132rpx;
+   width: 70%;
+} */
+.userInfo{
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  justify-content:space-between;
+}
+.userLeft{
+   width: 70%;
+   display: flex;
+   height: 100%;
+   align-items: center;
+}
+.userLeft .userPic{
+  width: 160rpx;
+  height: 160rpx;
+  margin:0 20rpx;
+}
+.userLeft .userText{
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+.userRight{
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.userRight image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+  
+}
+.badge-container{
+  position: absolute;
+  top: 20rpx;
+  left:140rpx;
+}

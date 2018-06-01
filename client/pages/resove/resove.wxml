@@ -1,0 +1,38 @@
+<!-- 添加收件人信息 -->
+<view class="content">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section">
+        <view class="section__title">收件人：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入收件人姓名" bindblur="addname"/>
+      </view>
+
+      <view class="section">
+        <view class="section__title">手机号：</view>
+        <input type="digit" placeholder-style="color:#ccc" bindblur="addphone" placeholder="请输入收件人电话号码" />
+      </view>
+      
+    <view class="section">
+      <view class="section__title">选择省市区:</view>
+       <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+      </picker>
+    </view>
+
+
+      <view class="section">
+        <view class="section__title">输入详细地址</view>
+        <input placeholder-style="color:#ccc"   placeholder="请输入收件人详细地址" bindinput="adddetail"/>
+      </view>
+
+
+       <view class='section copy'>
+          <button type='primary' class='button' bindtap='getcopy'>点这粘贴</button>
+          <input placeholder-style="color:#ccc" auto-height placeholder="粘贴收件人地址" bindblur="addname" value='{{copyaddress}}'/>
+       </view>
+
+        <view class="btn-area">
+          <button type='primary'   bindtap="submit">保存信息</button>
+          <button type='warn' formType="reset">重置信息</button>
+        </view>
+    </form>
+</view>

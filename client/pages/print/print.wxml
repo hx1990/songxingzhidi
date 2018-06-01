@@ -1,0 +1,10 @@
+<!--pages/print/print.wxml-->
+<text>pages/print/print.wxml</text>
+<view>
+   <view wx:for="{{printList}}" wx:key="{{index}}">
+        <view>{{item.send}}</view>
+        <view>{{item.receive}}</view>
+        <view>{{item.expressCompany}}</view>
+        <view>{{item.goodsType}}</view>
+   </view>
+</view>

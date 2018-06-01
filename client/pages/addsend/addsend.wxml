@@ -1,0 +1,33 @@
+<!-- 添加发件人信息 -->
+
+<view class="content">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section">
+        <view class="section__title">发件人：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入发件人姓名" bindblur="addname"/>
+      </view>
+    
+      <view class="section">
+        <view class="section__title">手机号：</view>
+        <input type="digit" placeholder-style="color:#ccc" bindblur="addphone" placeholder="请输入发件人电话号码" />
+      </view>
+
+      <view class="section">
+       <view class="section__title">选择省市区:</view>
+       <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+        </picker>
+      </view>
+
+      <view class="section">
+        <view class="section__title">输入详细地址:</view>
+        <input placeholder-style="color:#ccc" data-detail="d" placeholder="请输入发件人详细地址" bindinput="adddetail"/>
+      </view>
+
+        <view class="btn-area">
+          <button type='primary'   bindtap="submit">保存信息</button>
+          <button type='warn'  formType="reset">重置信息</button>
+        </view>
+    </form>
+</view>
+

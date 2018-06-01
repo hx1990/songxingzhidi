@@ -1,0 +1,60 @@
+<!--pages/index/sendexpress.wxml-->
+<!-- 发快递 -->
+
+<view class='content'>
+    <!-- 寄件人 -->
+    <navigator url="/pages/sendlist/sendlist" hover-class="navigator-hover" class='send item'>
+      <view class='name text'> 发件人</view>
+      <view class='msg'>
+       <view>{{send.name}}   {{send.phone}}</view>
+         <view> {{send.province}}{{send.city}}{{send.area}}{{send.detailAddress}}</view>
+      </view>
+      <view class='name pic'  >
+         <image src="../../images/right-1.png" />
+    </view>
+    </navigator>
+
+    <!-- 收件人 -->
+    <navigator url="/pages/addresslist/addresslist" hover-class="navigator-hover" class='resove item'>
+      <view class='name text'> 收件人</view>
+      <view class='msg'>
+       <view>{{resove.name}} {{resove.phone}}</view>
+         <view>{{resove.province}}{{resove.city}}{{resove.area}}{{resove.detailAddress}}</view>
+      </view>
+      <view  class='name pic'  >
+         <image src="../../images/right-1.png" />
+      </view>
+    </navigator>
+    
+
+    <!-- 选择快递公司 -->
+    <view class='expresstype item'>
+        <view class="rradio"> 快递公司</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" wx:for="{{items}}" wx:key="{{index}}">
+          <radio  checked="{{item.checked}}" value='{{item.value}}'/>{{item.value}}
+        </label>
+      </radio-group> 
+    </view>
+
+    <!-- 物品类型 -->
+    <view class='type item'>
+        <view class='name text'> 物品类型</view>
+          <picker bindchange="bindtypeChange" value="{{index}}" range="{{array}}">
+            <view class="picker">
+              {{array[index]}}
+            </view>
+          </picker>
+    </view>
+
+    <!-- 备注 -->
+    <view class='more item'>
+        <view class='name text'> 备注</view>
+        <input  placeholder-style="color:#999" bindblur="addmore" placeholder="请填写具体物品" />
+    </view>
+
+    <!-- 下单 -->
+    <view class='submit'>
+        <button bindtap='submit'  type='primary' >打印订单</button>
+    </view>
+</view>

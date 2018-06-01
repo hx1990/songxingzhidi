@@ -1,0 +1,17 @@
+<!-- 发件人信息列表 -->
+
+<view class='content'>
+   <view class='nodata' wx:if="{{sendlist.length==0}}">暂无数据，请添加发件人地址</view>
+   <view class='sendlist' wx:if="{{sendlist.length>0}}">
+    <view class='tite'>发件人列表</view>
+    <radio-group class="radio-group" bindchange="radioChange">
+      <label class="radio" wx:for="{{sendlist}}" wx:key="{{index}}">
+      <radio value="{{index}}" checked="{{item.checked}}"/>{{item.name}} {{item.phone}} {{item.address}}</label>
+  </radio-group>
+   </view>
+   <button class='submit' type='primary' bindtap='submit'wx:if="{{sendlist.length>0}}">确认选择</button>
+   <button bindtap='add' class="add" type='primary'>
+     <image src="../../images/add.png"></image>
+     <view class='text'>新增地址</view>
+   </button>
+</view>

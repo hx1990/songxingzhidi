@@ -1,0 +1,73 @@
+.addMaterial{
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  font-size: 30rpx;
+  flex-direction: column;
+}
+
+.nowBags{
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 2rpx solid #ccc;
+  padding-left: 30rpx;
+}
+.addBags{
+  width: 100%;
+  height: 80rpx;
+  line-height:80rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2rpx solid #ccc;
+}
+.add{
+  display: flex;
+  align-items: center;
+  margin-left: 22%;
+}
+.add input{
+  width: 80rpx;
+  height: 30rpx;
+  border: 2rpx solid #ccc;
+  margin-right: 6rpx;
+  min-height:38rpx;
+}
+
+.addBags button{
+  margin-left: 20%;
+  font-size: 32rpx;
+}
+.content{
+  width: 100%;
+}
+.bottom{
+  width: 100%;
+  height: 80rpx;
+  background: #ccc;
+}
+.bug{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+.report{
+  width: 100%;
+  height: 80rpx;
+  border: 2rpx solid #ccc;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}
+.reason{
+  width: 100%;
+}
+.reason view {
+  height: 80rpx;
+  line-height: 80rpx;
+  padding-left: 30rpx;
+}
+.reason textarea{
+  border: 2rpx solid #ccc;
+  margin-left: 30rpx;
+}

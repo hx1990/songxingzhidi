@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "zan-cell": "../../dist/cell/index",
+    "zan-cell-group": "../../dist/cell-group/index",
+    "top-bar":"../../components/top-bar/top-bar",
+    "zan-badge": "../../dist/badge/index"
+  }
+}

@@ -1,0 +1,28 @@
+<top-bar  title='取件中心' url='/pages/courier/courier'/>
+<view class='pickList'>
+  <view class='total'>
+    <text class='textNumber'>今天共：{{piece}}件  {{weight}}kg</text>
+    <text class='textPrice'>邮费：48件</text>
+    <button type='primary'>确认无误</button>
+  </view>
+  <view class='listDetail'>
+     <view class='listHead'>
+      <text>序号</text>
+      <text style='flex:3'>单号</text>
+      <text>收件地</text>
+      <text>重量</text>
+      <text>邮资</text>
+      <text style='flex:2'>快递柜地址</text>
+     </view>
+     <label wx:for="{{expresslist}}" wx:key="{{index}}">
+      <view class='listHead'>
+        <text style='flex:1'>{{item.id}}</text>
+        <text style='flex:3'>{{item.expressNumber}}</text>
+        <text style='flex:1'>{{item.address}}</text>
+        <text>{{item.weight}}</text>
+        <text>{{item.price}}</text>
+        <text style='flex:2'>{{item.machineAddress}}</text>
+      </view>
+     </label>
+  </view>
+</view>

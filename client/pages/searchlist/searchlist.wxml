@@ -1,0 +1,15 @@
+<!--快递订单查询-->
+<view class='content'>
+ <view class='top' bindtap="change">
+    <view class="{{inow==1?'click':''}}" data-value="1">已发货订单</view>  
+    <view class="{{inow==2?'click':''}}" data-value="2">未发货发货订单</view>
+ </view>
+  <view class='show'>
+        <radio-group class="radio-group" bindchange="radioChange">
+            <label class="radio " wx:for="{{inow==1?doneList:undoneList}}" wx:key="{{index}}">
+            <radio value="{{index}}" checked="{{item.checked}}"/>{{item.name}} {{item.phone}} {{item.address}} <view wx:if="{{inow==1}}">订单号：{{item.listNumber}}</view> 
+            </label>
+        </radio-group>
+  </view> 
+
+</view>

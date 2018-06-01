@@ -1,0 +1,33 @@
+.top{
+  width:100%;
+  display: flex;
+  text-align: center;
+  font-size: 40rpx;
+  background: #1e82d2;
+  color: #fff;
+  height: 132rpx;
+  
+  align-items: center;
+}
+.top .callback {
+  width: 20%;
+  height: 100%;
+  line-height: 132rpx;
+  margin-left: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.top .callback image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.backTitle{
+   margin-left: 20rpx;
+   height: 132rpx;
+   line-height: 132rpx;
+}
+.top .title{
+  height: 132rpx;
+   line-height: 132rpx;
+   width: 70%;
+}

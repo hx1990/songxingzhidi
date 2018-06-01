@@ -1,0 +1,64 @@
+<view class='top'>
+  <view>快递员</view>
+</view>
+<view class="content">
+  <view class='function'>
+    <view class='item' bindtap='saoma'>
+      <view  class='pic scan' style='background:#663399'>
+        <image  src="../../images/saoyisao.png"></image>
+      </view>
+      <view class='text'>扫一扫</view>
+    </view>
+    
+    <view class='item' bindtap='myCenter'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/user.png"></image>
+      </view>
+      <view class='text'>个人中心</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/pickup.png"></image>
+      </view>
+      <view class='text'>取件</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/material.png"></image>
+      </view>
+      <view class='text'>物料</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/account.png"></image>
+      </view>
+      <view class='text'>结算</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/guizi.png"></image>
+      </view>
+      <view class='text'>机柜</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/quote.png"></image>
+      </view>
+      <view class='text'>邮资</view>
+    </view>
+
+    <view class='item' bindtap='saoma'>
+      <view  class='pic' style='background:#663399'>
+        <image  src="../../images/service.png"></image>
+      </view>
+      <view class='text'>客服
+      </view>
+    </view>
+
+  </view>
+</view>

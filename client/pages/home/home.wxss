@@ -1,0 +1,70 @@
+/* pages/home/home.wxss */
+.content {
+  background: #ccc;
+  width: 100%;
+}
+.top {
+  display: flex;
+  width: 100%;
+  height: 200rpx;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rpx;
+  background: #fff;
+}
+.topleft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20rpx
+}
+.topleft image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx
+}
+.topleft .myname {
+  font-size: 34rpx;
+  
+}
+.topright image{
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.body{
+  width: 100%;
+  margin-top:10rpx;
+}
+.item {
+  height: 120rpx;
+  margin-bottom: 2rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.itemleft {
+  display: flex;
+  align-items: center;
+}
+.pic {
+  width: 80rpx;
+  height: 80rpx;
+  margin:0 20rpx;
+  border-radius: 50%;
+  background: #ccc;
+}
+.pic image {
+  width: 80%;
+  height: 80%;
+  margin: 10%
+}
+.itemright{
+  margin-right: 20rpx;
+}
+.item image{
+  width: 60rpx;
+  height: 60rpx;
+}

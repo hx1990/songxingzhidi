@@ -1,0 +1,71 @@
+<!-- 个人中心 -->
+<view class='content'>
+  <view class='top'>
+    <view class='topleft'>
+        <image src="{{url}}"></image>
+        <view class='myname'>个人中心：{{name}}</view>
+    </view>
+    <view class='topright'>
+       <image src='../../images/icon_06.png'/>
+       <image src='../../images/right-1.png'/>
+    </view>
+  </view> 
+
+  <view class='body'>
+     <!-- 发快递 -->
+      <navigator class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/send.png'></image>
+              </view>
+              <view class='text'>我要发件</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
+       
+       <!-- 我的发件地址 -->
+      <navigator class='send item' url="/pages/sendlist/sendlist" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/position1.png'></image>
+              </view>
+              <view class='text'>我的地址簿</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
+      
+      <!-- 我的收件地址 -->
+      <navigator class='send item' url="/pages/addresslist/addresslist" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/contact2.png'></image>
+              </view>
+              <view class='text'>我的收件人地址簿</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
+      
+      <!-- 我的发件记录 -->
+      <navigator class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/history.png'></image>
+              </view>
+              <view class='text'>我的发件记录</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
+      
+      <!-- 发件流程 -->
+      <navigator class='send item' url="/pages/guide/guide" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/guide.png'></image>
+              </view>
+              <view class='text'>发件流程</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
+    </view>
+</view>
+

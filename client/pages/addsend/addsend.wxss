@@ -1,0 +1,49 @@
+.content{
+  display: flex;
+  background: #ccc;
+}
+form {width:100%}
+.section{
+  height: 110rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  margin-bottom: 0rpx;
+  background: #fff;
+  border-radius: 5rpx;
+  display: flex;
+  line-height: 110rpx;
+}
+.section__title {
+  padding: 0rpx 20rpx;
+}
+
+.section input{
+  height: 110rpx;
+  line-height: 110rpx;
+}
+
+.picker{
+  padding: 0rpx 10rpx;
+}
+.select{
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-bottom: 2rpx solid #ccc;
+  margin-bottom: 10rpx;
+}
+
+.select .item {
+  flex: 1;
+  height: 110rpx;
+  line-height: 110rpx;
+}
+.select .section__title {
+  flex: 1.5;
+}
+.btn-area{
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+  padding-top: 30rpx;
+}

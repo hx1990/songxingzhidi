@@ -1,0 +1,30 @@
+<!-- <view class='top'>
+<view class='callback' bindtap='goHome'>
+   <image src='../../images/callback.png'></image>
+   <view class='backTitle'>返回</view>
+</view>
+  <view class='title'>个人中心</view>
+</view> -->
+<top-bar  title='个人中心' url='/pages/courier/courier'/>
+<view class='userInfo'>
+   <view class='userLeft'>
+      <open-data class='userPic' type="userAvatarUrl"></open-data>
+      <view class='userText'>
+         <view>韵达杭州滨江部</view>
+         <view>昵称：<open-data type="userNickName"></open-data></view>
+      </view>
+   </view>
+   <view class='userRight'>
+       <image src='../../images/icon_06.png'/>
+       <image src='../../images/right-1.png'/>
+   </view>
+</view>
+<zan-cell-group>
+    <zan-cell title="我的信息" is-link></zan-cell>
+    <zan-cell title="待取件" is-link url="/pages/pickUp/pickUp" linkType='redirectTo'>
+       <view class="badge-container">
+          <zan-badge>10</zan-badge>
+       </view>
+    </zan-cell>
+    <zan-cell title="我的钱包" label="附加描述" value="详细信息" is-link></zan-cell>
+</zan-cell-group>

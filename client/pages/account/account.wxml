@@ -1,0 +1,21 @@
+<top-bar title='结算' url='/pages/courier/courier'/>
+<view class='content'>
+   <view class='account'>
+      <text>余额：{{account}}元</text>
+      <button type='primary'>提现</button>
+   </view>
+   <view class='list'>
+      <text style='flex:2.5'>日期</text>
+      <text style='flex:1.5'>结算方式</text>
+      <text>金额</text>
+      <text>状态</text>
+   </view>
+   <label wx:for='{{accountList}}' wx:key="{{index}}">
+     <view class='list'>
+      <text style='flex:2.5'>{{item.date}}</text>
+      <text style='flex:1.5'>{{item.payment}}</text>
+      <text>{{item.sum}}</text>
+      <text>{{item.status}}</text>
+      </view>
+   </label>
+</view>

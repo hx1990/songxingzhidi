@@ -17,21 +17,21 @@
       <view class='text'>个人中心</view>
     </view>
 
-    <view class='item' bindtap='saoma'>
+    <view class='item' bindtap='pickUp'>
       <view  class='pic' style='background:#663399'>
         <image  src="../../images/pickup.png"></image>
       </view>
       <view class='text'>取件</view>
     </view>
 
-    <view class='item' bindtap='saoma'>
+    <view class='item' bindtap='material'>
       <view  class='pic' style='background:#663399'>
         <image  src="../../images/material.png"></image>
       </view>
       <view class='text'>物料</view>
     </view>
 
-    <view class='item' bindtap='saoma'>
+    <view class='item' bindtap='account'>
       <view  class='pic' style='background:#663399'>
         <image  src="../../images/account.png"></image>
       </view>
@@ -45,7 +45,7 @@
       <view class='text'>机柜</view>
     </view>
 
-    <view class='item' bindtap='saoma'>
+    <view class='item' bindtap='expressFees'>
       <view  class='pic' style='background:#663399'>
         <image  src="../../images/quote.png"></image>
       </view>

@@ -1,11 +1,12 @@
-// pages/courier/courier.js
+// pages/account/account.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    account:1340,
+    accountList: [{ date: '2018年06月06日', payment: '快递结算', sum: 500, status: '未结' }, { date: '2018年06月06日', payment: '快递结算', sum: 500, status: '未结' }, { date: '2018年06月06日', payment: '快递结算', sum: 500, status: '未结'}]
   },
 
   /**
@@ -14,33 +15,7 @@ Page({
   onLoad: function (options) {
   
   },
-  myCenter(){
-    wx.redirectTo({
-      url: '/pages/myCenter/myCenter',
-    })
-  },
-  pickUp() {
-    wx.redirectTo({
-      url: '/pages/pickUp/pickUp',
-    })
-  },
-  
-  material() {
-    wx.redirectTo({
-      url: '/pages/material/material',
-    })
-  },
-  account(){
-    wx.redirectTo({
-      url: '/pages/account/account',
-    })
-  },
-  expressFees(){
-    wx.redirectTo({
-      url: '/pages/expressFees/expressFees',
-    })
-  },
-  saoma(){},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -80,7 +55,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-     
+  
   },
 
   /**

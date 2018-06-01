@@ -1,1 +1,62 @@
 <top-bar title='快递资费' url='/pages/courier/courier'/>
+<!-- 快递员选择 -->
+<view class='sectiondetail'>
+  <text>我是：</text>
+  <view class="section">
+      <view></view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <input class="picker" value='{{array[index]}}'></input>
+      </picker> 
+      <picker bindchange="companyChange" value="{{companyIndex}}" range="{{expressCompany}}">
+         <input class='picker1 picker' value='{{expressCompany[companyIndex]}}'></input>
+      </picker>
+  </view>
+  <text>快递员</text>
+</view>
+<!-- 邮费规则 -->
+<view class='list'>
+    <text>距离</text>
+    <text>地区</text>
+    <text>文件</text>
+    <text>首重</text>
+    <text>续重</text>
+    <text>添加</text>
+</view>
+<!-- 添加规则 -->
+<view class='loopLine'>
+   <text class='center'>以：浙江为中心，</text>
+     <picker bindchange="loopChange" value="{{loopIndex}}" range="{{loopLine}}">
+         <input class='picker1 picker' value='{{loopLine[loopIndex]}}'></input>
+      </picker>
+   <text class='item'>浙江</text>
+   <text class='item'> 江苏</text> 
+   <text class='item'>上海</text>
+   <text class='item'> 安徽</text>
+</view>
+<!-- 选择环线 -->
+<view class='selectTitle'>
+   <label wx:for="{{array}}" wx:key="{{index}}">
+       <text>{{item}}</text>
+   </label>  
+</view>
+<!-- 计费价格 -->
+<view class='price'>
+   <view class='file'>
+      <text>文件：</text>
+      <input></input>
+      <text>元</text>
+   </view>
+   <view class="parcel">
+      <view class='fristWeight'>
+         <text>包裹首重：</text>
+         <input></input>
+         <text>kg/元</text>
+       </view>
+       <view class='nextWeight'>
+        <text>续重：</text>
+        <input></input>
+         <text>kg/元</text>
+       </view>
+   </view>
+   <button class='submit' type='primary'>确认提交</button>
+</view>

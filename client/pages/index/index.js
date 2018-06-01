@@ -16,10 +16,11 @@ Page({
     },
     onLoad(){
       wx.redirectTo({
-        // url: '/pages/courier/courier',
+        //  url: '/pages/courier/courier',
         // url: '/pages/myCenter/myCenter',
         // url: '/pages/material/material',
-        url: '/pages/expressFees/expressFees',
+         url: '/pages/expressFees/expressFees',
+        // url: '/pages/account/account',
         success: function(res) {},
         fail: function(res) {},
         complete: function(res) {},

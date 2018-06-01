@@ -1,30 +1,49 @@
-// pages/expressFees/expressFees.js
+import {citylist} from "../../utils/util"
+const log=console.log.bind(console)
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    array:[],
+    index:10,
+    expressCompany:[
+      '杭州余杭区中通快递','杭州西湖区韵达','杭州滨江顺丰','杭州上城圆通'
+    ],
+    companyIndex:0,
+    loopLine: ['第一环线', '第二环线', '第三环线', '第四环线', '第五环线'],
+    loopIndex:0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  companyChange(e){
+    this.setData({
+      companyIndex: e.detail.value
+    })
+  },
+  loopChange(e){
+    this.setData({
+      loopIndex:e.detail.value
+    })
+  },
+ 
   onLoad: function (options) {
-  
+      let arr=[]
+      citylist.forEach((key,index)=>{
+        arr.push(key.name)
+      })
+      this.setData({
+        array:arr
+      })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
+ 
   onReady: function () {
   
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
+ 
   onShow: function () {
   
   },

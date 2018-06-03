@@ -22,41 +22,50 @@
     <text>续重</text>
     <text>添加</text>
 </view>
+<label wx:for='{{showList}}' wx:key="{{index}}">
+    <view class='list'>
+        <text>{{item.loop}}</text>
+        <text>{{item.city}}</text>
+        <text>{{item.filePrice}}</text>
+        <text>{{item.fristWeight}}</text>
+        <text>{{item.nextWeight}}</text>
+        <text>{{item.action}}</text>
+    </view>
+</label>
 <!-- 添加规则 -->
 <view class='loopLine'>
    <text class='center'>以：浙江为中心，</text>
-     <picker bindchange="loopChange" value="{{loopIndex}}" range="{{loopLine}}">
+     <picker bindchange="loopChange" bindchange='loopChange' value="{{loopIndex}}" range="{{loopLine}}">
          <input class='picker1 picker' value='{{loopLine[loopIndex]}}'></input>
       </picker>
-   <text class='item'>浙江</text>
-   <text class='item'> 江苏</text> 
-   <text class='item'>上海</text>
-   <text class='item'> 安徽</text>
+   <label wx:for='{{loopNoe}}' wx:key="{{index}}">
+      <text class='item' bindtap='deleteCity' data-index="{{index}}"> {{item}}</text> 
+   </label>
 </view>
 <!-- 选择环线 -->
 <view class='selectTitle'>
    <label wx:for="{{array}}" wx:key="{{index}}">
-       <text>{{item}}</text>
+       <text bindtap='selectCity' data-index="{{index}}">{{item}}</text>
    </label>  
 </view>
 <!-- 计费价格 -->
 <view class='price'>
    <view class='file'>
       <text>文件：</text>
-      <input></input>
+      <input bindinput='filePrice'></input>
       <text>元</text>
    </view>
    <view class="parcel">
       <view class='fristWeight'>
          <text>包裹首重：</text>
-         <input></input>
+         <input bindinput='fristWeight'></input>
          <text>kg/元</text>
        </view>
        <view class='nextWeight'>
         <text>续重：</text>
-        <input></input>
+        <input bindinput='nextWeight'></input>
          <text>kg/元</text>
        </view>
    </view>
-   <button class='submit' type='primary'>确认提交</button>
+   <button class='submit' bindtap='submit' type='primary'>确认提交</button>
 </view>

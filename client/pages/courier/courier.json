@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "快递员",
   "navigationBarBackgroundColor": "#1e82d2",
-  "navigationBarTextStyle": "#ffffff"
+  "navigationBarTextStyle": "#ffffff",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance":40
 }

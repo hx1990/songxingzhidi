@@ -42,8 +42,8 @@
   margin:0 40rpx;
   border-radius: 50%;
   border: 1px solid #fff;
-  width: 140rpx;
-  height: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
   background: #6600cc;
 }
 

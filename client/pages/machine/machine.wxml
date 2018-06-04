@@ -1,0 +1,12 @@
+<!--pages/machine/machine.wxml-->
+<top-bar title='我的机柜' url='/pages/courier/courier'/>
+<view class='content'>
+   <view class='machineDetail'>
+      <view>机柜ID</view>
+      <view>机柜地址</view>
+      <view>代取件</view>
+      <view>快递袋</view>
+      <view>打印纸</view>
+   </view>
+</view>
+

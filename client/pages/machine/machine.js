@@ -1,4 +1,4 @@
-// pages/courier/courier.js
+// pages/machine/machine.js
 Page({
 
   /**
@@ -14,38 +14,7 @@ Page({
   onLoad: function (options) {
   
   },
-  myCenter(){
-    wx.redirectTo({
-      url: '/pages/myCenter/myCenter',
-    })
-  },
-  pickUp() {
-    wx.redirectTo({
-      url: '/pages/pickUp/pickUp',
-    })
-  },
-  
-  material() {
-    wx.redirectTo({
-      url: '/pages/material/material',
-    })
-  },
-  account(){
-    wx.redirectTo({
-      url: '/pages/account/account',
-    })
-  },
-  expressFees(){
-    wx.redirectTo({
-      url: '/pages/expressFees/expressFees',
-    })
-  },
-  machine(){
-    wx.redirectTo({
-      url: '/pages/machine/machine',
-    })
-  }, 
-  saoma(){},
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -85,7 +54,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-     console.log('上拉')
+  
   },
 
   /**

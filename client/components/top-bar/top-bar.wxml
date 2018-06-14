@@ -1,7 +1,12 @@
+<view class='warp'>
 <view class='top'>
 <view class='callback' bindtap='goHome'>
    <image src='../../images/callback.png'></image>
    <view class='backTitle'>返回</view>
 </view>
   <view class='title'>{{title}}</view>
+</view>
+</view>
+<view class='hold'>
+
 </view>

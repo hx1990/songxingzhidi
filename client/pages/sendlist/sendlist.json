@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "发件人信息管理",
   "navigationBarBackgroundColor": "#1e82d2",
-  "navigationBarTextStyle": "#ffffff"
+  "navigationBarTextStyle": "#ffffff",
+  "usingComponents": {
+    "top-bar": "../../components/top-bar/top-bar"
+  }
 }

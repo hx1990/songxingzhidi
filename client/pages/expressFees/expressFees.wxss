@@ -21,7 +21,8 @@
   width: 300rpx;
   margin-left: 10rpx;
   margin-right: 10rpx;
-  
+  font-size: 30rpx;
+  line-height: 40rpx;
 }
 .list{
   width:100%;

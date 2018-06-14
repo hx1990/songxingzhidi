@@ -2,70 +2,94 @@ const app = getApp()
 const log = console.log.bind(console)
 Page({
   data: {
-    printList:[]
+    printList:[],
+    didPrint:[],
+    inow: 2,
+    printNumber:[],
+    userId:0
   },
-  onLoad(){
-      let arr= []
-      let that=this
-      wx.getStorage({
-        key: 'printInfo',
-        success(res){
-          let json = {}
-           res.data.forEach((item, index) => {
-             json.exprssCompany = item.expressCompany
-             json.goodsType = item.goodsType
-             json.remark=item.remark
-              wx.request({
-                url: `${app.globalData.host}/get/receiver/sender`,
-                data: {
-                  type:1,
-                  userId: item.userId
-                 },
-                method: 'POST',
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded',
-                },
-                success(res) {
-                  let sendData=res.data.data
-                  sendData.forEach((key,index)=>{
-                    if (key.receiverSenderId == item.senderId){
-                      let str = `${key.name}  ${key.phone}  ${key.province}${key.city}${key.area}${key.detailAddress}`
-                        json.send=str
-                    }
-                  })
-                }
-              })
-              wx.request({
-                url: `${app.globalData.host}/get/receiver/sender`,
-                data: {
-                  type: 2,
-                  userId: item.userId
-                },
-                method: 'POST',
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded',
-                },
-                success(res) {
-                  let sendData = res.data.data
-                  sendData.forEach((key, index) => {
-                    if (key.receiverSenderId == item.receiverId) {
-                      let str = `${key.name}  ${key.phone}  ${key.province}${key.city}${key.area}${key.detailAddress}`
-                      json.receive = str
-                    }
-                  })
-                }
-              })
-              log(json)
-              arr.push(json)
+  onLoad(e){
+    let that=this
+    wx.request({
+      url: `${app.globalData.host}/get/order`,
+      data: {
+        userId: e.uid,
+      },
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded', // 默认值
+      },
+      success(res) {
+        log('aaaa',res.data.data)
+        let printList=[]
+        let didPrint=[]
+        res.data.data.forEach(key=>{
+          if(key.print){
+            didPrint.push(key)
+          }else{
+            printList.push(key)
+          }
+        })
+        log(printList.aaa)
+        that.setData({
+          printList: printList,
+          didPrint,
+          userId: e.uid
+        })
+      }
+    })
+  },
+  printOne(){
+     if(this.data.inow==2){
+       let that=this
+       this.data.printList.forEach((key,index)=>{
+         this.data.printNumber.forEach((item)=>{
+           if(index==item){
+             wx.request({ 
+               url: `${app.globalData.host}/api/print/order`,
+               data: {
+                 orderId:key.orderId,
+                 userId: that.data.userId
+               },
+               success(res) { 
+                 log('打印成功', res)
+               }
+             })
+           }
+         })
+       })
+     }
+  },
+  printAll(){
+    if(this.data.inow==2){
+      this.data.printList.forEach((key) => {
+            wx.request({
+              url: `${app.globalData.host}/api/print/order`,
+              data: {
+                orderId: key.orderId,
+                userId: that.data.userId
+              },
+              success(res) {
+                log('打印成功', res)
+              }
             })
-            log(that)
-          that.setData({
-            printList:arr
-          })
-          log(arr)
-          log(that.data.printList)
-        },
+          
       })
-  }
-  
+    }
+  },
+  radioChange(e){
+    let numberList=[]
+      e.detail.value.forEach((key)=>{
+       
+        numberList.push(Number(key))
+      })
+    this.setData({
+      printNumber: numberList
+    })
+  },
+  change(e) {
+    this.setData({
+      inow: Number(e.target.dataset.value)
+    })
+  },
 })

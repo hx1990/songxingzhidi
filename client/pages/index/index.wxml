@@ -1,4 +1,7 @@
 <!--index.wxml-->
+<view class='headtop'>
+  <view>送信智递</view>
+</view>
 <view class="container">
     <!-- banner区 -->
     <view class='bannerwarp'>
@@ -28,8 +31,7 @@
             <!-- 发快递 -->
             
             <view class='sendexpress'>
-              
-               <navigator url="/pages/sendexpress/sendexpress" hover-class="navigator-hover">
+               <navigator open-type='redirect' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover">
                <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='userInfo'> -->
                  <span class="sendtext">发快递</span>
                  <view class='sendpic'>
@@ -37,18 +39,17 @@
                  </view>
                  <!-- </button> -->
                </navigator>
-              
             </view>
            
             <!-- 查看快递 -->
             <view class='checkexpress'>
-                <navigator class='item top' url="/pages/addresslist/addresslist" hover-class="navigator-hover">
+                <navigator open-type='redirect' class='item top' url="/pages/addresslist/addresslist" hover-class="navigator-hover">
                  <view class='pic'>
                     <image  src="../../images/contact2.png"></image>
                  </view>
-                 <view class='text'>通讯录</view>
+                 <view class='text'>收件人</view>
                  </navigator>
-              <navigator class='item top' url="/pages/searchlist/searchlist" hover-class="navigator-hover">
+              <navigator open-type='redirect' class='item top' url="/pages/searchlist/searchlist" hover-class="navigator-hover">
               <view class='item bottom'>
                   <view class='pic'>
                     <image  src="../../images/search.png"></image>
@@ -104,7 +105,7 @@
        <!-- 收件人 -->
              <view class='recipients'>
                <view class='addres sitem'>
-                 <navigator url="/pages/sendlist/sendlist" hover-class="navigator-hover">
+                 <navigator open-type='redirect' url="/pages/sendlist/sendlist" hover-class="navigator-hover">
                    <view class='pic' style='background:#009966'>
                      <image  src="../../images/position1.png"></image>
                    </view>
@@ -126,14 +127,14 @@
       <view class='footeritem'>
          <view class='text'>代理商</view>
       </view> -->
-      <navigator url="/pages/home/home" hover-class="navigator-hover">
+      <navigator bindtap="register" open-type='redirect'  hover-class="navigator-hover">
       <view class='footeritem' >
          <view class='pic' >
                    <image  src="../../images/logo1.png"></image>
          </view>
          <view class='fright'> 
              <view class='text'>宋信</view>
-             <view class='text1'>开启邮路之门</view>
+             <view class='text1' >开启邮路之门</view>
          </view>
       </view>
       </navigator> 

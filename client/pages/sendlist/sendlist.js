@@ -7,9 +7,21 @@ Page({
     sendlist: [],
     index:0,
     userId:0,
+    mod:'',
+    zhengwuData:{}
   },
-  onLoad(){
+  onLoad(e) {
+    if(e.data){
+      let zwdata = JSON.parse(e.data)
+      this.setData({
+        mod: e.mod,
+        zhengwuData: zwdata
+      })
+      log(this.data.mod, this.data.zhengwuData)
+    }
+    
   },
+  
   add(){
     wx.redirectTo({
       url: '../addsend/addsend',
@@ -68,19 +80,8 @@ Page({
   submit(){
     let arr=this.data.sendlist
     let index=this.data.index
-    log('sendId', arr[index].senderId)
-    // wx.setStorage({
-    //   key: "send",
-    //   data: {
-    //     name: arr[index].name,
-    //     phone: arr[index].phone,
-    //     address: arr[index].address
-    //   },
-    //   success(){
-        wx.redirectTo({
-          url: '../sendexpress/sendexpress?senderId=' + arr[index].senderId
-        })
-    //   }
-    // })
+    wx.redirectTo({
+      url: '../sendexpress/sendexpress?senderId=' + arr[index].senderId
+    })
   }
 })

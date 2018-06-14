@@ -1,10 +1,31 @@
-<!--pages/print/print.wxml-->
-<text>pages/print/print.wxml</text>
-<view>
-   <view wx:for="{{printList}}" wx:key="{{index}}">
-        <view>{{item.send}}</view>
-        <view>{{item.receive}}</view>
-        <view>{{item.expressCompany}}</view>
-        <view>{{item.goodsType}}</view>
-   </view>
+
+<top-bar title='打印详情' url='/pages/index/index'/>
+<view class='content'>
+   <view class='top' bindtap="change">
+    <view class="{{inow==1?'click':''}}" data-value="1">已打印订单</view>  
+    <view class="{{inow==2?'click':''}}" data-value="2">未打印订单</view>
+ </view>
+  <view class='show'>
+        <checkbox-group class="radio-group" bindchange="radioChange">
+             <view class="nodata" wx:if="{{(inow==1&&didPrint.length==0)}}">暂无已打印订单</view>
+             <view class="nodata" wx:if="{{(inow==2&&printList.length==0)}}">暂无未打印订单</view>
+            <label class="radio " wx:for="{{inow==1?didPrint:printList}}" wx:key="{{index}}">
+           
+            <checkbox value="{{index}}" checked="{{item.checked}}"/>
+              <view class='item'>
+                  <view class='subitem'><text>发件人：{{item.sender.name}} <text class='margleft'>发件电话：{{item.sender.phone}}</text></text> <text>发件地址：{{item.sender.address}}</text> </view>
+                  <view class='subitem'><text>收件人：{{item.receiver.name}} <text class='margleft'>收件电话：{{item.receiver.phone}}</text></text> <text>收件地址：{{item.receiver.address}}</text> </view>
+                  <view>快递公司：{{item.expressCompany}}</view>
+                  <view class='margleft'>物品类型：{{item.goodsType}}</view>
+                  <view>订单创建时间：{{item.createTime}}</view>
+              </view> 
+            </label>
+        </checkbox-group>
+  </view> 
+  <view class='sumit-botton'>
+  <button wx:if="{{inow==2&&printList.length!=0}}" type='primary' bindtap='printOne'>打印选择订单</button>
+  <button wx:if="{{inow==2&&printList.length!=0}}" type='primary' bindtap='printAll'>打印全部</button>
+  </view>
+  
+   
 </view>

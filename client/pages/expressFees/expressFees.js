@@ -2,6 +2,7 @@ import {citylist} from "../../utils/util"
 const log=console.log.bind(console)
 let allCity = []
 let noeCity=[]
+let formList = [{ loop: '第一环线', city: [], index: 0 },  { city: [], index: 1 },{ index: 2, city: [], }, { city: [], index: 3 }, { city: [], index: 4 }]
 Page({
   data: {
     array:[],
@@ -16,7 +17,9 @@ Page({
     fristWeight:0,
     nextWeight:0,
     fliePrice:0,
-    showList:[]
+    showList:[],
+    bshow:'block',
+    loopData: []
   },
   companyChange(e){
     this.setData({
@@ -42,25 +45,40 @@ Page({
   //选择城市
   selectCity(e){
     let index = e.target.dataset.index
-    noeCity.push(this.data.array[index])
+    //选择环数
+    let loopIndex=this.data.loopIndex
+    formList.forEach((key)=>{
+      if (key.index == loopIndex){  //存在添加
+        key.loop = this.data.loopLine[loopIndex]
+        key.city.push(this.data.array[index])
+      }
+    })
+    
     let tempCity = this.data.array
     tempCity.splice(index, 1)
     this.setData({
-      loopNoe:noeCity,
-      array:tempCity
+      array:tempCity,
+      loopData:formList
     })
   },
   //取消选择
   deleteCity(e){
+    let loopIndex = this.data.loopIndex
     let index = e.target.dataset.index
     let tempCity = this.data.array
-    tempCity.push(this.data.loopNoe[index])
-    noeCity.splice(index, 1)
+    formList.forEach((key) => {
+      if (key.index == loopIndex) {  //存在添加
+        tempCity.push(key.city[index])
+        key.city.splice(index, 1)
+      }
+    })
+    
     this.setData({
-      loopNoe: noeCity,
+      loopData: formList,
       array: tempCity
     })
   },
+
   bindPickerChange(e) {
     this.setData({
       index: e.detail.value
@@ -90,22 +108,38 @@ Page({
   submit(){
     let arr = []
     log(this.data.loopIndex)
-    if (this.data.loopIndex==0){
-      this.data.loopNoe.forEach((key,index)=>{
-        let json={}
-        json.loop='1环'
-        json.city=key
-        json.filePrice=this.data.filePrice
-        json.fristWeight = this.data.fristWeight
-        json.nextWeight=this.data.nextWeight
-        json.action='修改'
-        arr.push(json)
-      })
-    }
-    this.setData({
-      showList:arr
+    let jsonloop={}
+    formList.forEach((key)=>{
+      if(key.index==this.data.loopIndex){
+        key.filePrice = this.data.filePrice
+        key.fristWeight = this.data.fristWeight
+        key.nextWeight = this.data.nextWeight
+        key.action = '修改'
+      }
     })
     
+    // if (this.data.loopIndex==0){
+    //   this.data.loopNoe.forEach((key,index)=>{
+    //     let json={}
+    //     json.loop='1环'
+    //     json.city=key
+    //     json.filePrice=this.data.filePrice
+    //     json.fristWeight = this.data.fristWeight
+    //     json.nextWeight=this.data.nextWeight
+    //     json.action='修改'
+    //     arr.push(json)
+    //   })
+    // }
+    this.setData({
+      showList:arr,
+      bshow:"none",
+      loopData:formList
+    })
+  },
+  addList(){
+    this.setData({
+      bshow: "block"
+    })
   },
   onReady: function () {
 

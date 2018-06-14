@@ -1,6 +1,6 @@
 <!--pages/index/sendexpress.wxml-->
 <!-- 发快递 -->
-
+<top-bar title='发快递' url='/pages/index/index'/>
 <view class='content'>
     <!-- 寄件人 -->
     <navigator url="/pages/sendlist/sendlist" hover-class="navigator-hover" class='send item'>
@@ -55,6 +55,6 @@
 
     <!-- 下单 -->
     <view class='submit'>
-        <button bindtap='submit'  type='primary' >打印订单</button>
+        <button bindtap='submit'  type='primary' >提交订单</button>
     </view>
 </view>

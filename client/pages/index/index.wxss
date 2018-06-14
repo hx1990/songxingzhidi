@@ -1,4 +1,21 @@
 /**index.wxss**/
+.headtop{
+  width:100%;
+  display: flex;
+  left: 0;
+  top:0;
+  text-align: center;
+  font-size: 40rpx;
+  background: #1e82d2;
+  color: #fff;
+  height: 125rpx;
+  font-weight:600;
+}
+.headtop view {
+  width: 100%;
+  height: 100%;
+  line-height: 125rpx;
+}
 page {
     background: #0d1017;
     display: flex;

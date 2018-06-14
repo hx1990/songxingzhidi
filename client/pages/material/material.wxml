@@ -2,12 +2,12 @@
 <view class='content'>
     <!-- 添加快递袋 -->
     <view class='addMaterial'>
-      <view class='nowBags'>本机现快递袋：{{expressBags}} 张     </view>
+      <view class='nowBags'>本机现快递袋：{{expressBags}} 张</view>
       <view class='addBags'>
           <view class='add'>
-              <text>补充：</text><input /><text>张</text>
+              <text>补充：</text><input type='number' bindinput='addPackage'/><text>张</text>
           </view>
-          <button type='warn'>确认无误</button>
+          <button type='warn' bindtap='bSurePackage'>确认无误</button>
       </view>
     </view>
     <view class='bottom'></view>
@@ -16,9 +16,9 @@
       <view class='nowBags'>本机现打印纸：{{printPapers}} 张 </view>
       <view class='addBags'>
           <view class='add'>
-              <text>补充：</text><input /><text>张</text>
+              <text>补充：</text><input bindinput="addPaper" type='number'/><text>张</text>
           </view>
-          <button type='warn'>确认无误</button>
+          <button type='warn' bindtap='bSurePaper'>确认无误</button>
       </view>
     </view>
     <view class='bottom'></view>

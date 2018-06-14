@@ -1,0 +1,48 @@
+<top-bar title='快递员申请' url='/pages/index/index'/>
+<view class="content">
+  <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="section">
+        <view class="section__title">申请人：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入姓名" bindblur="addname"/>
+      </view>
+    
+      <view class="section">
+        <view class="section__title">手机号：</view>
+        <input type="number" placeholder-style="color:#ccc" bindblur="addphone" placeholder="请输入手机号" />
+        <button class='getphone'>获取验证码</button>
+      </view>
+
+      <view class="section">
+        <view class="section__title">填写验证码:</view>
+        <input type="number" placeholder-style="color:#ccc" bindblur="addcode" placeholder="输入验证码" />
+      </view>
+
+      <view class="section">
+        <view class="section__title">快递公司：</view>
+        <input  placeholder-style="color:#ccc" bindblur="addcompany" placeholder="请输入所在快递公司" />
+      </view>
+
+      <view class="section">
+       <view class="section__title">选择省市区:</view>
+       <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+        </picker>
+      </view>
+      
+      <view class="section">
+        <view class="section__title">所在片区:</view>
+        <input placeholder-style="color:#ccc" data-detail="d" placeholder="请输入所在片区" bindinput="adddetail"/>
+      </view>
+
+      <view class='idcard'>
+         <button type='primary' bindtap='upLoadPic'>上传手持身份证</button>
+        <view><image style="{{imgUrl==''?'display:none':'dispaly:block'}}" src="{{imgUrl}}"></image></view>
+      </view>
+
+        <view class="btn-area">
+          <button type='primary'   bindtap="submit">保存信息</button>
+          <button type='warn'  formType="reset">重置信息</button>
+        </view>
+
+    </form>
+</view>

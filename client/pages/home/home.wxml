@@ -1,9 +1,10 @@
 <!-- 个人中心 -->
+<top-bar title='个人中心' url='/pages/index/index'/>
 <view class='content'>
   <view class='top'>
     <view class='topleft'>
-        <image src="{{url}}"></image>
-        <view class='myname'>个人中心：{{name}}</view>
+        <open-data class='userPic' type="userAvatarUrl"></open-data>
+        <view class='myname'>个人中心：<open-data type="userNickName"></open-data></view>
     </view>
     <view class='topright'>
        <image src='../../images/icon_06.png'/>
@@ -12,8 +13,18 @@
   </view> 
 
   <view class='body'>
+     <!-- 申请二维码 -->
+      <navigator open-type='redirect' class='send item' url="/pages/qrCode/qrCode" hover-class="navigator-hover"> 
+          <view class='itemleft'>
+              <view class='pic'>
+                  <image src='../../images/icon_06.png'></image>
+              </view>
+              <view class='text'>申请二维码</view>
+          </view>
+          <image class='itemright' src='../../images/right-1.png'/>
+      </navigator>
      <!-- 发快递 -->
-      <navigator class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
+      <navigator open-type='redirect' class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
           <view class='itemleft'>
               <view class='pic'>
                   <image src='../../images/send.png'></image>
@@ -24,7 +35,7 @@
       </navigator>
        
        <!-- 我的发件地址 -->
-      <navigator class='send item' url="/pages/sendlist/sendlist" hover-class="navigator-hover"> 
+      <navigator open-type='redirect' class='send item' url="/pages/sendlist/sendlist" hover-class="navigator-hover"> 
           <view class='itemleft'>
               <view class='pic'>
                   <image src='../../images/position1.png'></image>
@@ -35,7 +46,7 @@
       </navigator>
       
       <!-- 我的收件地址 -->
-      <navigator class='send item' url="/pages/addresslist/addresslist" hover-class="navigator-hover"> 
+      <navigator open-type='redirect' class='send item' url="/pages/addresslist/addresslist" hover-class="navigator-hover"> 
           <view class='itemleft'>
               <view class='pic'>
                   <image src='../../images/contact2.png'></image>
@@ -46,7 +57,7 @@
       </navigator>
       
       <!-- 我的发件记录 -->
-      <navigator class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
+      <navigator open-type='redirect' class='send item' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover"> 
           <view class='itemleft'>
               <view class='pic'>
                   <image src='../../images/history.png'></image>
@@ -57,7 +68,7 @@
       </navigator>
       
       <!-- 发件流程 -->
-      <navigator class='send item' url="/pages/guide/guide" hover-class="navigator-hover"> 
+      <navigator open-type='redirect' class='send item' url="/pages/guide/guide" hover-class="navigator-hover"> 
           <view class='itemleft'>
               <view class='pic'>
                   <image src='../../images/guide.png'></image>
@@ -66,6 +77,7 @@
           </view>
           <image class='itemright' src='../../images/right-1.png'/>
       </navigator>
+      
     </view>
 </view>
 

@@ -18,6 +18,7 @@ Page({
       index: e.detail.value
     })
   },
+  
   onShow() {
     let that = this
     wx.getStorage({
@@ -37,12 +38,12 @@ Page({
             'content-type': 'application/x-www-form-urlencoded',
           },
           success(res) {
-            log(res)
+           
             let list = []
             let address = ''
             res.data.data.forEach((item, index) => {
               address = `${item.province}${item.city}${item.area}${item.detailAddress}`
-              log(address)
+             
               let json = {}
               json.receiverId = item.receiverSenderId
               json.name = item.name
@@ -50,7 +51,7 @@ Page({
               json.address = address
               list.push(json)
             })
-            log(list)
+           
             that.setData({
               sendlist: list
             })

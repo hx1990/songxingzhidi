@@ -1,0 +1,27 @@
+<!--pages/qrCode/qrCode.wxml-->
+<top-bar title='生成二维码' url='/pages/home/home'/>
+<view>
+    <view class="section">
+        <view class="section__title">输入姓名：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入姓名" bindinput="addName"/>
+    </view>
+
+    <view class="section">
+        <view class="section__title">工作单位：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入工作单位" bindinput="addCompany"/>
+    </view>
+
+    <view class="section">
+        <view class="section__title">电话号码：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入电话号码" bindinput="addPhone"/>
+    </view>
+   <view class="section">
+        <view class="section__title">地址：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入地址" bindinput="addAddress"/>
+    </view>
+   <button bindtap='submit' type='primary'>生成二维码</button>
+   <view class='pic' style='display:{{bshow}}'>
+       <image style='width: 250px; height: 250px;' src='http://qr.liantu.com/api.php?&w=250&h=250&text={{qrcodeData}}'/>
+   </view>
+   
+</view>

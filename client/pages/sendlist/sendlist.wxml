@@ -1,15 +1,38 @@
 <!-- 发件人信息列表 -->
+<top-bar title='发件人' url='/pages/sendexpress/sendexpress'/>
 
 <view class='content'>
+   <view class='top'>
+    <view class='topleft'>
+        <open-data class='userPic' type="userAvatarUrl"></open-data>
+        <view class='myname'>个人中心：<open-data type="userNickName"></open-data></view>
+    </view>
+    <view class='topright'>
+       <image src='../../images/icon_06.png'/>
+       <image src='../../images/right-1.png'/>
+    </view>
+  </view> 
    <view class='nodata' wx:if="{{sendlist.length==0}}">暂无数据，请添加发件人地址</view>
    <view class='sendlist' wx:if="{{sendlist.length>0}}">
     <view class='tite'>发件人列表</view>
     <radio-group class="radio-group" bindchange="radioChange">
       <label class="radio" wx:for="{{sendlist}}" wx:key="{{index}}">
-      <radio value="{{index}}" checked="{{item.checked}}"/>{{item.name}} {{item.phone}} {{item.address}}</label>
+      <radio value="{{index}}" checked="{{item.checked}}"/>
+         <view class='radiodetail'>
+            <view>发件人：{{item.name}} <text class='marginleft'>电话：{{item.phone}}</text></view>
+            <view class='address'>
+               <view>
+                发件人地址：{{item.address}}
+               </view> 
+              <button class='send' style="{{mod=='zhengwu'?'display:block':'display:none'}}" type='primary'>
+                  发件到{{zhengwuData.company}}
+              </button>
+            </view>
+         </view>
+      </label>
   </radio-group>
    </view>
-   <button class='submit' type='primary' bindtap='submit'wx:if="{{sendlist.length>0}}">确认选择</button>
+   <button style="{{mod=='zhengwu'?'display:none':'display:block'}}" class='submit' type='primary' bindtap='submit'wx:if="{{sendlist.length>0}}">确认选择</button>
    <button bindtap='add' class="add" type='primary'>
      <image src="../../images/add.png"></image>
      <view class='text'>新增地址</view>

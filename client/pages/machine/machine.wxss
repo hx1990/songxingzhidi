@@ -1,10 +1,26 @@
 .content{
   width: 100%;
   display: flex;
+  flex-wrap: wrap
 }
 .machineDetail{
-  flex: 1;
+  box-sizing: border-box;
+  width: 50%;
   border: 2rpx solid #ccc;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  border-radius: 20%;
+  justify-content: center;
+  align-items: center;
+  font-size: 34rpx;
+}
+.text,.item{
+  position: relative;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+.badge-container{
+  right:-16rpx;
+  top:0rpx;
+  position: absolute;
 }

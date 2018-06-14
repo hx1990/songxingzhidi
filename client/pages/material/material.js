@@ -1,12 +1,10 @@
-// pages/material/material.js
+const log=console.log.bind(console)
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
      expressBags:12,
      printPapers:40,
+     pushExpressBages:0,
+     pushPapers:0
   },
   upPic(){
     wx.chooseImage({
@@ -28,53 +26,33 @@ Page({
       }
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+ 
   onReady: function () {
   
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
+ 
   onPullDownRefresh: function () {
   
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
+  //添加快递袋
+  addPackage(e){
+    this.setData({
+      pushExpressBages: Number(e.detail.value)
+    })
+  },
+  //确认添加快递袋
+  bSurePackage(e){
+     
+  },
+
+  //添加打印纸
+  addPaper(e){
+    this.setData({
+      pushPapers: Number(e.detail.value)
+    })
+    log(this.data.pushPapers)
   },
 
   /**

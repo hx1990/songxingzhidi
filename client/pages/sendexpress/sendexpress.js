@@ -21,6 +21,7 @@ Page({
      userId:0
    },
  onLoad(e){
+   
    if(e.senderId){
      senderId = Number(e.senderId)
     }
@@ -146,17 +147,13 @@ Page({
               'content-type': 'application/x-www-form-urlencoded',
             },
             success(res) {
-              log(res)
+              // log(res)
+              wx.redirectTo({
+                url: `/pages/print/print?uid=${that.data.userId}`,
+              })
             }
           })
-          if (res.confirm) {
-            wx.setStorage({
-              key: 'print',
-              data: {
-                print: true
-              },
-            })
-          }
+         
         }
       })
     }

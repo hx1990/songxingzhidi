@@ -1,0 +1,19 @@
+/* pages/qrCode/qrCode.wxss */
+.section{
+  height: 110rpx;
+  width: 100%;
+  border-bottom: 2rpx solid #ccc;
+  margin-bottom: 0rpx;
+  background: #fff;
+  border-radius: 5rpx;
+  display: flex;
+  line-height: 110rpx;
+}
+.section__title {
+  padding: 0rpx 20rpx;
+}
+
+.section input{
+  height: 110rpx;
+  line-height: 110rpx;
+}

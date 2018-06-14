@@ -1,4 +1,5 @@
 <!--pages/guide/guide.wxml-->
+<top-bar title='附件流程' url='/pages/home/home'/>
 <view class='content'>
      <view>1.填写快递信息：</view>
       <text>点击(发快递)填写发件人信息，收件人信息，选择快递公司、快递类型，如有其他需求请备注说明</text>

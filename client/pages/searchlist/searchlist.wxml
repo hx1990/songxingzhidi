@@ -1,4 +1,5 @@
 <!--快递订单查询-->
+<top-bar title='快递查询' url='/pages/index/index'/>
 <view class='content'>
  <view class='top' bindtap="change">
     <view class="{{inow==1?'click':''}}" data-value="1">已发货订单</view>  

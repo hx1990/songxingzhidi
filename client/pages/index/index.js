@@ -15,11 +15,26 @@ Page({
         bsend:false
     },
     onLoad(){
+      wx.getSystemInfo({
+        success(res) {
+          log(res.version)
+          let version = res.version.split('.')
+          if (parseInt(version[0]) >= 6 && parseInt(version[1]) >= 6) {
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: '当前微信版本过低，许多功能将无法正常使用，请升级到最新微信版本后重试。'
+            })
+          }
+        }
+      })
+      
       wx.redirectTo({
-         url: '/pages/courier/courier',
+          url: '/pages/courier/courier',
+         //url:'/pages/qrCode/qrCode',
         // url: '/pages/myCenter/myCenter',
         // url: '/pages/material/material',
-        //  url: '/pages/expressFees/expressFees',
+        // url: '/pages/expressFees/expressFees',
         // url: '/pages/account/account',
         success: function(res) {},
         fail: function(res) {},
@@ -60,33 +75,16 @@ Page({
           })
         }
       })
-      // wx.login({  //调用用户登录信息
-      //   success(res) {
-      //     wx.request({  //将用户code发个后台
-      //       url: `${app.globalData.host}/wx/login`,
-      //       data: {
-      //         code: res.code,
-      //       },
-      //       success(res) { //从后台拿到用户id
-      //         that.setData({
-      //           uid: res.data.data.id
-      //         })
-      //         wx.setStorage({
-      //           key: "userInfo",
-      //           data: {
-      //             userId: res.data.data.id,
-      //             openId: res.data.data.openId
-      //           },
-      //         })
-      //       }
-      //     })
-      //   }
-      // })
+      
     },
     saoma(){
       wx.scanCode({
         success: (res) => {
-          console.log(res)
+          log(res.result)
+          
+          // wx.redirectTo({
+          //   url: `/pages/sendlist/sendlist?mod=zhengwu&data=${res.result}`,
+          // })
         }
       })
     },
@@ -95,6 +93,7 @@ Page({
     // },
     //打开机柜门
     opendoor(){
+      let that=this
       wx.showModal({
         title: '提示',
         content: '确认打开机柜门？',
@@ -102,6 +101,17 @@ Page({
           if (res.confirm) {
             wx.showLoading({
               title: '打开中',
+            })
+            wx.request({
+              url: `${app.globalData.host}/api/open/door`,
+              data: {
+                userId: that.data.uid,
+                doorId:1000
+              },
+              success(res) {
+                log('开门成功', res)
+                wx.hideLoading()
+              }
             })
             setTimeout(function () {
               wx.hideLoading()
@@ -139,17 +149,18 @@ Page({
                 }
              })   
           }else{   //选择要打印订单
-            log(res.data.data)
-            let data=res.data.data
-            wx.setStorage({
-              key: 'printInfo',
-              data: data,
-              success(){
-                wx.redirectTo({
-                  url: '/pages/print/print',
-                })
-              }
+            log('userid',that.data.uid)
+            wx.redirectTo({
+              url: `/pages/print/print?uid=${that.data.uid}`,
             })
+            // let data=res.data.data
+            // wx.setStorage({
+            //   key: 'printInfo',
+            //   data: data,
+            //   success(){
+                
+            //   }
+            // })
           }
         }
       })
@@ -225,34 +236,72 @@ Page({
     },
     //获取快递袋
     getpackge(){
-      if(this.data.bsend){  //检查是否打印快递单
-        wx.showModal({
-          title: '提示',
-          content: '确认领取快递袋？',
-          success: function (res) {
-            if (res.confirm) {
-              wx.showLoading({
-                title: '正在出袋中..',
-              })
-              setTimeout(function () {
-                wx.hideLoading()
-              }, 2000)
-            } else if (res.cancel) {
-             
-            }
+      let that=this
+      wx.request({
+        url: `${app.globalData.host}/get/order`,
+        data: {
+          userId: this.data.uid,
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+        },
+        success(res) {
+          let len = res.data.data.length
+          if (len>0) {  //检查是否打印快递单
+            wx.showModal({
+              title: '提示',
+              content: '确认领取快递袋？',
+              success: function (res) {
+                if (res.confirm) {
+                  wx.showLoading({
+                    title: '正在出袋中..',
+                  })
+                  wx.request({
+                    url: `${app.globalData.host}/api/get/express/bag`,
+                    data: {
+                      userId: that.data.uid
+                    },
+                    success(res) {
+                      log('出袋成功', res)
+                      wx.hideLoading()
+                    }
+                  })
+                } else if (res.cancel) {
+
+                }
+              }
+            })
+          } else {
+            wx.showModal({
+              title: '提示',
+              content: '打印快递单之后才能领取快递袋，请先打印快递单！',
+            })
           }
-        })
-        this.setData({
-          bsend:false
-        })
-      }else{
-        wx.showModal({
-          title: '提示',
-          content: '打印快递单之后才能领取快递袋，请先打印快递单！',
-        })
-      }
+        }
+      })
+      
       
     },
+    register(){
+      wx.showModal({
+        title: '提示',
+        content: '请选择申请类型',
+        cancelText:'快递员',
+        confirmText:'代理商',
+        cancelColor: '#3CC51F',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定')
+          } else if (res.cancel) {
+            wx.redirectTo({
+              url: '/pages/register/register',
+            })
+          }
+        }
+      })
+    },
+    
     onUnload(){
       log('销毁组建')
     }

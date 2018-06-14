@@ -1,5 +1,5 @@
 <!-- 添加发件人信息 -->
-
+<top-bar title='添加发件人' url='/pages/sendlist/sendlist'/>
 <view class="content">
   <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section">

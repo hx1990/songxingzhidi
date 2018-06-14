@@ -1,4 +1,5 @@
 <!-- 添加收件人信息 -->
+<top-bar title='添加收件人' url='/pages/addresslist/addresslist'/>
 <view class="content">
   <form bindsubmit="formSubmit" bindreset="formReset">
       <view class="section">

@@ -1,24 +1,49 @@
-// pages/machine/machine.js
+// pages/qrCode/qrCode.js
+const log=console.log.bind(console)
+const json={}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    machineInfo:[
-      {machineId:'0002',address:'余杭市民中心',express:15,package:24,printPeper:56},
-      { machineId: '0002', address: '余杭市民中心', express: 15, package: 6, printPeper: 56 },
-      { machineId: '0002', address: '余杭市民中心', express: 15, package: 24, printPeper: 20 },
-      { machineId: '0002', address: '余杭市民中心', express: 15, package: 8, printPeper: 56 }
-    ]
-  
+    bshow:'none',
+    name:'',
+    company:'',
+    phone:0,
+    address:'',
+    qrcodeData:[],
   },
-
+  submit(){
+    log(json)
+    let str=JSON.stringify(json)
+    this.setData({
+      bshow:'block',
+      qrcodeData:str
+    })
+  },
+  addName(e){
+    json.name=e.detail.value
+  },
+  addCompany(e) {
+    json.company = e.detail.value
+  },
+  addPhone(e) {
+    json.phone = e.detail.value
+  },
+  addAddress(e) {
+    json.address = e.detail.value
+  },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad() {
+     wx.getStorage({
+       key: 'userInfo',
+       success: function(res) {
+         json.userId=res.data.userId
+       },
+     })
   },
 
   /**

@@ -1,5 +1,8 @@
 {
   "navigationBarTitleText": "添加发件人信息",
   "navigationBarBackgroundColor": "#1e82d2",
-  "navigationBarTextStyle": "#ffffff"
+  "navigationBarTextStyle": "#ffffff",
+  "usingComponents": {
+    "top-bar": "../../components/top-bar/top-bar"
+  }
 }

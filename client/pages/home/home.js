@@ -1,13 +1,9 @@
 // pages/home/home.js
 const log=console.log.bind(console)
 Page({
-
-  /**
-   * 页面的初始数据
-   */
+  
   data: {
-    name:'',
-    url:''
+    
   },
 
   /**
@@ -17,12 +13,10 @@ Page({
     let that=this
     wx.getUserInfo({
       success(res){
-        log(res)
         that.setData({
           name:res.userInfo.nickName,
           url:res.userInfo.avatarUrl
         })
-        log(that.data.name, that.data.url)
       }
     })
   

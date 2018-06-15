@@ -17,7 +17,7 @@ Page({
     onLoad(){
       wx.getSystemInfo({
         success(res) {
-          log(res.version)
+          log('测试版本',res.version)
           let version = res.version.split('.')
           if (parseInt(version[0]) >= 6 && parseInt(version[1]) >= 6) {
           } else {
@@ -29,17 +29,17 @@ Page({
         }
       })
       
-      wx.redirectTo({
-          url: '/pages/courier/courier',
-         //url:'/pages/qrCode/qrCode',
-        // url: '/pages/myCenter/myCenter',
-        // url: '/pages/material/material',
-        // url: '/pages/expressFees/expressFees',
-        // url: '/pages/account/account',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+      // wx.redirectTo({
+      //     url: '/pages/courier/courier',
+      //    //url:'/pages/qrCode/qrCode',
+      //   // url: '/pages/myCenter/myCenter',
+      //   // url: '/pages/material/material',
+      //   // url: '/pages/expressFees/expressFees',
+      //   // url: '/pages/account/account',
+      //   success: function(res) {},
+      //   fail: function(res) {},
+      //   complete: function(res) {},
+      // })
       // wx.clearStorage()
       let that=this
       wx.getStorage({

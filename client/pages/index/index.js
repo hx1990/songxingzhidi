@@ -29,17 +29,17 @@ Page({
         }
       })
       
-      wx.redirectTo({
-          url: '/pages/courier/courier',
-         //url:'/pages/qrCode/qrCode',
-        // url: '/pages/myCenter/myCenter',
-        // url: '/pages/material/material',
-        // url: '/pages/expressFees/expressFees',
-        // url: '/pages/account/account',
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
+      // wx.redirectTo({
+      //     url: '/pages/courier/courier',
+      //    //url:'/pages/qrCode/qrCode',
+      //   // url: '/pages/myCenter/myCenter',
+      //   // url: '/pages/material/material',
+      //   // url: '/pages/expressFees/expressFees',
+      //   // url: '/pages/account/account',
+      //   success: function(res) {},
+      //   fail: function(res) {},
+      //   complete: function(res) {},
+      // })
       // wx.clearStorage()
       let that=this
       wx.getStorage({
@@ -93,6 +93,7 @@ Page({
     // },
     //打开机柜门
     opendoor(){
+      log('开门')
       let that=this
       wx.showModal({
         title: '提示',
@@ -103,26 +104,40 @@ Page({
               title: '打开中',
             })
             wx.request({
-              url: `${app.globalData.host}/api/open/door`,
+              url: `${app.globalData.host}/api/open/cabinet`,
               data: {
                 userId: that.data.uid,
-                doorId:1000
+                cabinetNum:1000
               },
               success(res) {
                 log('开门成功', res)
                 wx.hideLoading()
               }
             })
-            setTimeout(function () {
-              wx.hideLoading()
-            }, 2000)
+            
           } else if (res.cancel) {
             console.log('用户点击取消')
           }
         }
       })
     },
-
+    getUserInfo(e){
+      log(e.detail.encrypteData)
+      log(e.detail.iv)
+      wx.request({
+      url: `${app.globalData.host}/get/order`,
+        data: {
+        userId: this.data.uid,
+        },
+      method: 'POST',
+      header: {
+      'content-type': 'application/x-www-form-urlencoded', // 默认值
+      },
+      success(res) {
+        log('开门成功')
+      },
+      })
+    },
     //选择打印快递单号
     printlist(){
       let that=this

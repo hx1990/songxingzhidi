@@ -44,15 +44,21 @@ Page({
        let that=this
        this.data.printList.forEach((key,index)=>{
          this.data.printNumber.forEach((item)=>{
+           
            if(index==item){
+             wx.showLoading({
+               title: '打印中...',
+             })
              wx.request({ 
                url: `${app.globalData.host}/api/print/order`,
                data: {
                  orderId:key.orderId,
+                 
                  userId: that.data.userId
                },
                success(res) { 
                  log('打印成功', res)
+                 wx.hideLoading()
                }
              })
            }
@@ -63,6 +69,9 @@ Page({
   printAll(){
     if(this.data.inow==2){
       this.data.printList.forEach((key) => {
+            wx.showLoading({
+              title: '打印中...',
+            })
             wx.request({
               url: `${app.globalData.host}/api/print/order`,
               data: {
@@ -71,6 +80,7 @@ Page({
               },
               success(res) {
                 log('打印成功', res)
+                wx.hideLoading()
               }
             })
           

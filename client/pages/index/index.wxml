@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class='headtop'>
-  <view>送信智递</view>
+  <view>宋信智递</view>
 </view>
 <view class="container">
     <!-- banner区 -->
@@ -100,6 +100,7 @@
     </view>
    
   <!-- 底部导航 -->
+  <!-- <button open-type='getUserInfo' bindgetuserinfo='getUserInfo'>授权</button> -->
   <view class='space'></view>
    <view class='footer'>
        <!-- 收件人 -->

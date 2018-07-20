@@ -4,7 +4,7 @@
    <view class='top' bindtap="change">
     <view class="{{inow==1?'click':''}}" data-value="1">已打印订单</view>  
     <view class="{{inow==2?'click':''}}" data-value="2">未打印订单</view>
- </view>
+   </view>
   <view class='show'>
         <checkbox-group class="radio-group" bindchange="radioChange">
              <view class="nodata" wx:if="{{(inow==1&&didPrint.length==0)}}">暂无已打印订单</view>

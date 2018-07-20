@@ -6,7 +6,7 @@
   top:0;
   text-align: center;
   font-size: 40rpx;
-  background: #1e82d2;
+  background: #349b9a;
   color: #fff;
   height: 125rpx;
   font-weight:600;
@@ -98,7 +98,7 @@ page {
 .checkexpress{
   width: 100%;
   height: 50%;
-  background: #364250;
+  background: rgb(52, 155, 154);
   display: flex;
   flex-direction: column;
   
@@ -146,7 +146,7 @@ page {
 
 .expressoption{
   height: 100%;
-  background: #364250;
+  background: rgb(52,155,154);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -204,7 +204,7 @@ page {
   flex: 1;
   width: 100%;
   height: 100%;
-  background: #374351;
+  background: rgb(52,155,154);
   text-align: center;
   display: flex;
   justify-content: center;
@@ -270,7 +270,7 @@ page {
 .sitem{
   flex: 1;
   height: 100%;
-  background: #364250;
+  background: rgb(52,155,154);
 }
 .sitem .pic{
   border-radius: 50%;

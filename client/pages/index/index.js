@@ -17,7 +17,7 @@ Page({
     onLoad(){
       wx.getSystemInfo({
         success(res) {
-          log(res.version)
+          log('测试版本',res.version)
           let version = res.version.split('.')
           if (parseInt(version[0]) >= 6 && parseInt(version[1]) >= 6) {
           } else {

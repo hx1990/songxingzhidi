@@ -72,16 +72,10 @@ Page({
       }
     })
   },
-  radioChange(e){
-    this.setData({
-      index:e.detail.value
-    })
-  },
-  submit(){
-    let arr=this.data.sendlist
-    let index=this.data.index
+  
+  submit(e){
     wx.redirectTo({
-      url: '../sendexpress/sendexpress?senderId=' + arr[index].senderId
+      url: '../sendexpress/sendexpress?senderId=' + e.currentTarget.dataset.send
     })
   }
 })

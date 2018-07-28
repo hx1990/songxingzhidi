@@ -43,7 +43,6 @@ Page({
             let address = ''
             res.data.data.forEach((item, index) => {
               address = `${item.province}${item.city}${item.area}${item.detailAddress}`
-             
               let json = {}
               json.receiverId = item.receiverSenderId
               json.name = item.name
@@ -67,24 +66,11 @@ Page({
     })
   },
 
-  submit() {
-    let arr = this.data.sendlist
-    let index = this.data.index
-    log('测试index', this.data.index)
-    log(arr[index])
-    wx.setStorage({
-      key: "resove",
-      data: {
-        name: arr[index].name,
-        phone: arr[index].phone,
-        address: arr[index].address
-      },
-      success() {
-        wx.redirectTo({
-          url: '../sendexpress/sendexpress?receiverId=' + arr[index].receiverId
-        })
-      }
+  submit(e) {
+    wx.redirectTo({
+      url: '../sendexpress/sendexpress?receiverId=' + e.currentTarget.dataset.send
     })
+    
   },
   
   /**

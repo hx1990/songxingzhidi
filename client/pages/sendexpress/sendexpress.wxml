@@ -7,6 +7,7 @@
       <view class='name text'> 发件人</view>
       <view class='msg'>
        <view>{{send.name}}   {{send.phone}}</view>
+         <view wx:if="{{send.address}}">{{send.address}}</view>
          <view> {{send.province}}{{send.city}}{{send.area}}{{send.detailAddress}}</view>
       </view>
       <view class='name pic'  >
@@ -19,6 +20,7 @@
       <view class='name text'> 收件人</view>
       <view class='msg'>
        <view>{{resove.name}} {{resove.phone}}</view>
+        <view wx:if="{{resove.address}}">{{resove.address}}</view>
          <view>{{resove.province}}{{resove.city}}{{resove.area}}{{resove.detailAddress}}</view>
       </view>
       <view  class='name pic'  >

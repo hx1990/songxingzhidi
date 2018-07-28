@@ -16,7 +16,14 @@ Page({
     city: '杭州市',
     area: '滨江区',
     imgUrl:'',
-    company:''
+    company:[],
+    index:1,
+    array:['佰全物业','绿城物业'],
+    zpic:'../../images/zpic.png',
+    fpic: '../../images/fpic.png',
+    Zbchange:false,
+    Fbchange:false,
+    propertyId:0
   },
 
   onLoad() {
@@ -30,6 +37,26 @@ Page({
       },
       fail(err) {
         log('shibai', err)
+      }
+    })
+    wx.request({
+      url: app.globalData.host + '/api/property/name/list',
+      success(res){
+        if(res.data.code==200){
+            let arr=[]
+            res.data.data.forEach((key,index)=>{
+              arr.push(key.fullName)
+            })
+            that.setData({
+              company:res.data.data,
+              array:arr
+            })
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: res.data.message,
+          })
+        }
       }
     })
   },
@@ -84,8 +111,11 @@ Page({
 
   //输入快递公司
   addcompany(e){
+    let index=e.detail.value
+    
     this.setData({
-      company: e.detail.value
+      index,
+      propertyId: this.data.company[index].propertyId
     })
   },
 
@@ -127,7 +157,7 @@ Page({
       })
     } else {
       wx.showModal({
-        title: '确认添加收件人信息',
+        title: '确认添加取件员信息',
         content: `${this.data.name}  ${this.data.phone}  ${this.data.address}`,
         success: function (res) {
           if (res.confirm) {
@@ -135,17 +165,16 @@ Page({
               address: `${provie}${this.data.detail}`
             })
             wx.request({
-              url: `${app.globalData.host}/add/receiver/sender `,
+              url: `${app.globalData.host}/api/property/staff/apply`,
               method: 'POST',
               data: {
                 userId: that.data.userId,
-                type: 1,
                 name: that.data.name,
+                propertyId: that.data.propertyId,
                 phone: that.data.phone,
-                detailAddress: that.data.detail,
-                province: that.data.province,
-                city: that.data.city,
-                area: that.data.area
+                address: this.data.address,
+                cardDown: 'https://www.songxinde.cn/pic/cardUp.png',
+                cardUp:'https://www.songxinde.cn/pic/cardUp.png',
               },
               header: {
                 'content-type': 'application/x-www-form-urlencoded'
@@ -174,19 +203,69 @@ Page({
     }
     log('提交完成')
   },
-  upLoadPic(){
+  
+  uploadzIdcard() {
+    let that = this
     wx.chooseImage({
-      count: 1, // 默认9
-      // sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-      // sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        this.setData({
-          imgUrl:tempFilePaths
+      success: function (e) {
+        var tempFilePaths = e.tempFilePaths
+        wx.showLoading({
+          title: '图片上传中..',
         })
-      }.bind(this)
+        wx.uploadFile({
+          url: `${host}/upload/picture`,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          success(res) {
+            log('上传图片', res)
+            let json = JSON.parse(res.data)
+            that.setData({
+              zpic: json.data,
+              Zbchange: true
+            })
+            wx.hideLoading()
+          },
+          fail(err) {
+            wx.hideLoading()
+            wx.showModal({
+              title: '提示',
+              content: err.errMsg,
+            })
+          }
+        })
+      }
     })
-  }
+  },
+  uploadfIdcard() {
+    let that = this
+    wx.chooseImage({
+      success: function (e) {
+        var tempFilePaths = e.tempFilePaths
+        wx.showLoading({
+          title: '图片上传中..',
+        })
+        wx.uploadFile({
+          url: `${host}/upload/picture`,
+          filePath: tempFilePaths[0],
+          name: 'file',
+          success(res) {
+            let json = JSON.parse(res.data)
+            log(json.data)
+            that.setData({
+              fpic: json.data,
+              Fbchange: true
+            })
+          },
+          fail(err) {
+            wx.hideLoading()
+            wx.showModal({
+              title: '提示',
+              content: err.errMsg,
+            })
+          }
+        })
 
+      }
+    })
+  },
 })

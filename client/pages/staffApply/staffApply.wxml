@@ -1,0 +1,28 @@
+<top-bar title='员工申请' url='/pages/index/index'/>
+<view>
+    <view class="section">
+        <view class="section__title">员工姓名：</view>
+        <input placeholder-style="color:#ccc" placeholder="请输入员工姓名" bindinput="addname"/>
+      </view>
+
+     <view class="section">
+        <view class="section__title">手机号：</view>
+        <input type="digit" placeholder-style="color:#ccc" bindinput="addphone" placeholder="请输入员工电话号码" />
+      </view>
+      
+     <label wx:if="{{array.length}}">
+      <view class="section" >
+        <view class="section__title">选择部门:</view>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+         <view class="picker">{{array[index]}}</view>
+        </picker>
+      </view>
+      </label>
+       
+
+      <view class="btn-area">
+          <button type='primary'   bindtap="submit">提交申请</button>
+          <button type='warn'  formType="reset">重置信息</button>
+       </view>
+
+</view>

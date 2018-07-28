@@ -12,7 +12,8 @@ Page({
         takeSession: false,
         requestResult: '',
         uid:0,
-        bsend:false
+        bsend:false,
+        hidden:true
     },
     onLoad(){
       wx.getSystemInfo({
@@ -29,22 +30,12 @@ Page({
         }
       })
       
-      // wx.redirectTo({
-      //     url: '/pages/courier/courier',
-      //    //url:'/pages/qrCode/qrCode',
-      //   // url: '/pages/myCenter/myCenter',
-      //   // url: '/pages/material/material',
-      //   // url: '/pages/expressFees/expressFees',
-      //   // url: '/pages/account/account',
-      //   success: function(res) {},
-      //   fail: function(res) {},
-      //   complete: function(res) {},
-      // })
-      // wx.clearStorage()
+     
       let that=this
       wx.getStorage({
         key: 'userInfo',
         success(res){
+          log('获取缓存成功',res)
           that.setData({
             uid: res.data.userId
           })
@@ -81,16 +72,10 @@ Page({
       wx.scanCode({
         success: (res) => {
           log(res.result)
-          
-          // wx.redirectTo({
-          //   url: `/pages/sendlist/sendlist?mod=zhengwu&data=${res.result}`,
-          // })
         }
       })
     },
-    // getPhoneNumber(e){
-    //   log('用户信息',e)
-    // },
+    
     //打开机柜门
     opendoor(){
       log('开门')
@@ -137,6 +122,37 @@ Page({
         log('开门成功')
       },
       })
+    },
+    onGotUserInfo(e){ //更新用户信息
+      let that = this
+      wx.request({
+        url: `${app.globalData.host}/wx/update/user/info`,
+        data: {
+          userId: that.data.uid,
+          nickName: e.detail.userInfo.nickName,
+          face: e.detail.userInfo.avatarUrl,
+          gender: e.detail.userInfo.gender
+        },
+        method: 'POST',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded', // 默认值
+        },
+        success(res) {
+          if(res.data.code==200){
+            
+            wx.redirectTo({
+              url: '/pages/sendexpress/sendexpress?index='+true+'&userId='+that.data.uid,
+            })  
+          }else{
+            wx.showModal({
+              title: '提示',
+              content: res.data.message,
+            })
+          }
+          log('userinfo', res)
+        },
+      })
+        wx.detail
     },
     //选择打印快递单号
     printlist(){
@@ -283,7 +299,6 @@ Page({
                     }
                   })
                 } else if (res.cancel) {
-
                 }
               }
             })
@@ -294,27 +309,50 @@ Page({
             })
           }
         }
-      })
-      
-      
+      }) 
     },
-    register(){
-      wx.showModal({
-        title: '提示',
-        content: '请选择申请类型',
-        cancelText:'快递员',
-        confirmText:'代理商',
-        cancelColor: '#3CC51F',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            wx.redirectTo({
-              url: '/pages/register/register',
-            })
-          }
-        }
+  cancel() { //取消
+    this.setData({
+      hidden: true
+    });
+  },
+  //确认
+  confirm() {
+    this.setData({
+      hidden: true
+    })
+  },
+  submit(e){
+    log(e.detail.value)
+    if (e.detail.value=='送票员'){
+      this.setData({
+        hidden: false
       })
+      wx.redirectTo({
+        url: '/pages/register/register',
+      })
+    }
+  },
+    register(){
+       this.setData({
+         hidden:false
+       })
+      // wx.showModal({
+      //   title: '提示',
+      //   content: '请选择申请类型',
+      //   cancelText:'快递员',
+      //   confirmText:'代理商',
+      //   cancelColor: '#3CC51F',
+      //   success: function (res) {
+      //     if (res.confirm) {
+      //       console.log('用户点击确定')
+      //     } else if (res.cancel) {
+      //       wx.redirectTo({
+      //         url: '/pages/register/register',
+      //       })
+      //     }
+      //   }
+      // })
     },
     
     onUnload(){

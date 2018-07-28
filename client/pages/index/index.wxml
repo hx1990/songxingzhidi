@@ -22,25 +22,23 @@
     session-from="weapp"
   >
 </contact-button> -->
-   <!-- <button class='loginbutton' open-type="getUserInfo"></button> 
+   <!--  
    <button class='loginbutton' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"> </button> -->
     <!-- 快递业务 -->
     <view class='business'>
         <!-- 左边业务 -->
         <view class='warpleft pitem'>
             <!-- 发快递 -->
-            
-            <view class='sendexpress'>
+            <button class='sendexpress' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">
+            <!-- <view class='sendexpress'> -->
                <navigator open-type='redirect' url="/pages/sendexpress/sendexpress" hover-class="navigator-hover">
-               <!-- <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class='userInfo'> -->
                  <span class="sendtext">发快递</span>
                  <view class='sendpic'>
                     <image  src="../../images/send.png"></image>
                  </view>
-                 <!-- </button> -->
                </navigator>
-            </view>
-           
+            <!-- </view> -->
+           </button>
             <!-- 查看快递 -->
             <view class='checkexpress'>
                 <navigator open-type='redirect' class='item top' url="/pages/addresslist/addresslist" hover-class="navigator-hover">
@@ -98,7 +96,9 @@
             
         </view>
     </view>
-   
+    <modal id="modal" hidden="{{hidden}}"  title="" confirm-text="" cancel-text="" bindcancel="cancel" bindconfirm="confirm">
+<input type='text' bindinput='submit' placeholder="" />
+</modal>
   <!-- 底部导航 -->
   <!-- <button open-type='getUserInfo' bindgetuserinfo='getUserInfo'>授权</button> -->
   <view class='space'></view>
@@ -128,7 +128,7 @@
       <view class='footeritem'>
          <view class='text'>代理商</view>
       </view> -->
-      <navigator bindtap="register" open-type='redirect'  hover-class="navigator-hover">
+      <view bindtap="register" >
       <view class='footeritem' >
          <view class='pic' >
                    <image  src="../../images/logo1.png"></image>
@@ -138,8 +138,7 @@
              <view class='text1' >开启邮路之门</view>
          </view>
       </view>
-      </navigator> 
-
+      </view> 
   </view>
     
 </view>

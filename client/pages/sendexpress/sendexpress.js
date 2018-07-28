@@ -21,7 +21,51 @@ Page({
      userId:0
    },
  onLoad(e){
-   
+   log(e)
+   if (e.index){ //从首页进入，选择寄件类型
+     wx.showModal({
+       title: '提示',
+       content: '请选择寄件类型',
+       cancelText: '个人件',
+       confirmText: '企业件',
+       cancelColor: '#3CC51F',
+       success: function (res) {
+         if (res.confirm) {
+           console.log('用户点击确定')
+         } else if (res.cancel) {
+           wx.request({
+             url: `${app.globalData.host}/api/send/select/type`,
+             data: {
+               userId: e.userId,
+               type:1
+             },
+             method: 'POST',
+             header: {
+               'content-type': 'application/x-www-form-urlencoded', // 默认值
+             },
+             success(res) {
+               if (res.data.code == 200) {
+                  log(res.data.data)
+                 if (res.data.data.receiver){
+                   that.setData({
+                     send: res.data.data.sender,
+                     resove: receiver
+                   })
+                 }
+                 
+               }else{
+                  wx.showModal({
+                    title: '提示',
+                    content: res.data.message,
+                  })
+               }
+             }
+             })
+         }
+       }
+     })
+   }
+  
    if(e.senderId){
      senderId = Number(e.senderId)
     }

@@ -18,31 +18,42 @@
       </view>
 
       <view class="section">
-        <view class="section__title">快递公司：</view>
-        <input  placeholder-style="color:#ccc" bindblur="addcompany" placeholder="请输入所在快递公司" />
+        <view class="section__title">选择物业公司：</view>
+        <picker bindchange="addcompany" value="{{index}}" range="{{array}}">
+            <view class="picker">{{array[index]}} </view>
+        </picker>
       </view>
 
       <view class="section">
-       <view class="section__title">选择省市区:</view>
+       <view class="section__title">物业所在省市区:</view>
        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
         <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
         </picker>
       </view>
       
       <view class="section">
-        <view class="section__title">所在片区:</view>
+        <view class="section__title">物业详细地址:</view>
         <input placeholder-style="color:#ccc" data-detail="d" placeholder="请输入所在片区" bindinput="adddetail"/>
       </view>
 
-      <view class='idcard'>
-         <button type='primary' bindtap='upLoadPic'>上传手持身份证</button>
-        <view><image style="{{imgUrl==''?'display:none':'dispaly:block'}}" src="{{imgUrl}}"></image></view>
+   <view class='upload'>
+      <view class='upload-title'>上传身份证</view>
+      <view class='upload-content'>
+          <view class='item'>
+            <image class="{{Zbchange?'image':''}}"  src="{{zpic}}" bindtap="uploadzIdcard"></image>
+            <view>身份证正面</view>
+          </view>
+          <view  class='item'>
+            <image src="{{fpic}}" class="{{Fbchange?'image':''}}"  bindtap="uploadfIdcard"></image>
+            <view>身份证反面</view>
+          </view>
       </view>
+    </view>  
 
-        <view class="btn-area">
-          <button type='primary'   bindtap="submit">保存信息</button>
-          <button type='warn'  formType="reset">重置信息</button>
-        </view>
+    <view class="btn-area">
+      <button type='primary'   bindtap="submit">保存信息</button>
+      <button type='warn'  formType="reset">重置信息</button>
+    </view>
 
     </form>
 </view>
